@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" />
+<title>SMB-Shares-Shell – alt.comp.hsr</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"SMB-Shares-Shell","wgTitle":"SMB-Shares-Shell","wgCurRevisionId":1123,"wgRevisionId":1123,"wgArticleId":42,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":!1,"wgPageContentLanguage":"de","wgPageContentModel":"wikitext","wgSeparatorTransformTable":[",\t.",".\t,"],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"wgMonthNamesShort":["","Jan.","Feb.","Mär.","Apr.","Mai","Jun.","Jul.","Aug.","Sep.","Okt.","Nov.","Dez."],"wgRelevantPageName":"SMB-Shares-Shell","wgRelevantArticleId":42,"wgIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[]});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"de"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits"]);
+} );</script>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cmediawiki.skinning.interface%257Cskins.monobook.styles&amp;only=styles&amp;skin=monobook.css" />
+<!--[if IE 6]><link rel="stylesheet" href="/skins/MonoBook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/MonoBook/IE70Fixes.css?303" media="screen" /><![endif]-->
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=site&amp;only=styles&amp;skin=monobook.css" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
+<script async="" src="load.php%3Fdebug=false&amp;lang=de&amp;modules=startup&amp;only=scripts&amp;skin=monobook"></script>
+<meta name="generator" content="MediaWiki 1.26.0" />
+<link rel="shortcut icon" href="http://altcomphsr.vshsr.ch/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="alt.comp.hsr (de)" />
+<link rel="EditURI" type="application/rsd+xml" href="api.php%3Faction=rsd" />
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html" />
+<link rel="alternate" type="application/atom+xml" title="Atom-Feed für „alt.comp.hsr“" href="./index.php%3Ftitle=Spezial:Letzte_%25C3%2584nderungen&amp;feed=atom" />
+</head>
+<body class="mediawiki ltr sitedir-ltr capitalize-all-nouns ns-0 ns-subject page-SMB-Shares-Shell skin-monobook action-view">
+<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="de">SMB-Shares-Shell</h1>
+				
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">Aus alt.comp.hsr</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Wechseln zu: <a href="index.php%3Ftitle=SMB-Shares-Shell.html#column-one">Navigation</a>, <a href="index.php%3Ftitle=SMB-Shares-Shell.html#searchInput">Suche</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" lang="de" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Inhaltsverzeichnis</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#Serverangaben"><span class="tocnumber">1</span> <span class="toctext">Serverangaben</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#c206.hsr.ch"><span class="tocnumber">1.1</span> <span class="toctext">c206.hsr.ch</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#c101.hsr.ch"><span class="tocnumber">1.2</span> <span class="toctext">c101.hsr.ch</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#fs-i.hsr.ch"><span class="tocnumber">1.3</span> <span class="toctext">fs-i.hsr.ch</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#Windowsfreigaben_via_smbfs.2Fcifs_mounten"><span class="tocnumber">2</span> <span class="toctext">Windowsfreigaben via smbfs/cifs mounten</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#Installation"><span class="tocnumber">2.1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#Mounten"><span class="tocnumber">2.2</span> <span class="toctext">Mounten</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#Eintr.C3.A4ge_in_der_fstab"><span class="tocnumber">2.3</span> <span class="toctext">Einträge in der fstab</span></a>
+<ul>
+<li class="toclevel-3 tocsection-9"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#Optionen"><span class="tocnumber">2.3.1</span> <span class="toctext">Optionen</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-10"><a href="index.php%3Ftitle=SMB-Shares-Shell.html#Eintr.C3.A4ge_in_der_.2Fetc.2Ffstab_ohne_Passw.C3.B6rter"><span class="tocnumber">2.4</span> <span class="toctext">Einträge in der /etc/fstab ohne Passwörter</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Serverangaben">Serverangaben</span></h2>
+<p>Die HSR verwendet ein DFS Filesystem, um verschiedene Shares auf verschiedenen Servern unter \\hsr.ch\root\ zusammenzufassen. Unter Unix funktioniert das nicht immer so gut, deshalb werden hier die direkten Samba-Shares verwendet.
+</p>
+<h3><span class="mw-headline" id="c206.hsr.ch">c206.hsr.ch</span></h3>
+<p>IP: 152.96.90.26
+</p><p>Freigaben:
+</p>
+<ul><li> twixtelprog - Twixtel Zentrale Ablage</li>
+<li> twixteldaten - Twixtel Daten</li>
+<li> virtualcd - IT Systems Installations CDs</li>
+<li> ittools - IT Tools Extern</li>
+<li> stdsoft - Allgemeine  Software Ablage Studierende</li>
+<li> scratch - HSR Temporaereablage</li>
+<li> skripte - HSR Skript Ablage</li>
+<li> tmp - HSR Temporaereablage</li>
+<li> ebooks - HSR Bibliothek Ebooks</li>
+<li> vshsr - Verein Studierende HSR</li>
+<li> rattenfest - Rattenfest </li>
+<li> notfall - HSR Notfall Datenablage</li></ul>
+<h3><span class="mw-headline" id="c101.hsr.ch">c101.hsr.ch</span></h3>
+<p>IP: 67.215.65.132
+</p><p>Freigaben:
+</p>
+<ul><li> &lt;hsr-benutzername&gt; - Studentenverzeichnisse</li></ul>
+<h3><span class="mw-headline" id="fs-i.hsr.ch">fs-i.hsr.ch</span></h3>
+<p>Hier werden Images von virtuellen Maschinen gespeichert. Damit man kein Input/output Error bekommt (<code>mount error(5): Input/output error</code> und smbclient sagt <code>NT_STATUS_DUPLICATE_NAME</code> → SMB Share funktioniert mit CNAME Record nicht: [<a rel="nofollow" class="external autonumber" href="http://support.microsoft.com/kb/281308">[1]</a>]) , wählt man den direkten Namen aus dem A Record (<code>sin00003.hsr.ch</code>) statt <code>fs-i.hsr.ch</code>, damit es funktioniert:
+</p>
+<pre> sudo mount.cifs //sin00003.hsr.ch/vimages /mnt/ -o user=eduss
+</pre>
+<h2><span class="mw-headline" id="Windowsfreigaben_via_smbfs.2Fcifs_mounten">Windowsfreigaben via smbfs/cifs mounten</span></h2>
+<h3><span class="mw-headline" id="Installation">Installation</span></h3>
+<pre>sudo apt-get install smbfs
+</pre>
+<h3><span class="mw-headline" id="Mounten">Mounten</span></h3>
+<p>Der Mountpoint ist hier mit /mnt/hsr/skripte, /mnt/hsr/scratch und /mnt/hsr/<b>HSR-Benutzername</b> angegeben, kann aber beliebig verändert werden.
+</p><p>Zuerst müssen die Verzeichnisse angelegt werden.
+</p>
+<pre>$ sudo mkdir -p /mnt/hsr/{skripte,scratch,<b>HSR-Benutzername</b>}
+</pre>
+<p>Anschliessen können die verschienden Verzeichnisse gemountet werden. Das <b>HSR-Passwort</b> wird jeweils abgefragt.
+</p>
+<pre>$ sudo mount -t cifs //c206.hsr.ch/skripte /mnt/hsr/skripte/ -o username=<b>HSR-Benutzername</b>,iocharset=utf8
+$ sudo mount -t cifs //c206.hsr.ch/scratch /mnt/hsr/scratch/ -o username=<b>HSR-Benutzername</b>,iocharset=utf8
+$ sudo mount -t cifs //c101/<b>HSR-Benutzername</b> /mnt/hsr/<b>HSR-Benutzername</b>/ -o username=<b>HSR-Benutzername</b>,iocharset=utf8
+</pre>
+<p>Um zu verhindern, dass das Passwort abgefragt wird, kann man es auch sogleich im Befehl mit angeben. Allerdings taucht dann das Passwort im <i><b>Klartext</b></i> in der History der Bash auf.
+</p>
+<pre>$ sudo mount -t cifs //c206.hsr.ch/skripte /mnt/hsr/skripte/ -o username=<b>HSR-Benutzername</b>,password=<b>HSR-Passwort</b>,iocharset=utf8
+$ sudo mount -t cifs //c206.hsr.ch/scratch /mnt/hsr/scratch/ -o username="<b>HSR-Benutzername</b>",password=<b>HSR-Passwort</b>,iocharset=utf8
+$ sudo mount -t cifs //c101/<b>HSR-Benutzername</b> /mnt/hsr/<b>HSR-Benutzername</b>/ -o username=<b>HSR-Benutzername</b>,password=<b>HSR-Passwort</b>,iocharset=utf8
+</pre>
+<p><br />
+<a rel="nofollow" class="external text" href="http://de.wikipedia.org/wiki/Server_Message_Block">CIFS</a> (Common Internet File System) ist die Ablösung von <a rel="nofollow" class="external text" href="http://de.wikipedia.org/wiki/Server_Message_Block">SMBFS</a> (Samba File System) und sollte wenn möglich verwendet werden.
+</p>
+<h3><span class="mw-headline" id="Eintr.C3.A4ge_in_der_fstab">Einträge in der fstab</span></h3>
+<p>Um sich das Leben ein wenig zu vereinfachen, können die Shares in der Datei /etc/fstab eingetragen werden. Damit wird es möglich, falls denn gewünscht, dass die Shares ohne Rootrechte gemountet werden können.
+</p>
+<pre>//c206.hsr.ch/skripte /mnt/hsr/skripte cifs username=<b>"HSR-Username"</b>,noauto,user,iocharset=utf8 0 0
+//c206.hsr.ch/scratch /mnt/hsr/scratch cifs username=<b>"HSR-Username"</b>,noauto,user,iocharset=utf8 0 0
+//c101/"HSR-Username" /mnt/hsr/<b>"HSR-Username"</b> cifs username=<b>"HSR-Username"</b>,noauto,user,iocharset=utf8 0 0
+</pre>
+<p>Falls gewünscht, kann das HSR-Passwort auch direkt in der fstab abgelegt werden. Allerdings ist es dann für <i><b>jeden</b></i> Benutzer des Computers im <i><b>Klartext</b></i> ersichtlich.
+</p>
+<pre>//c206.hsr.ch/skripte /mnt/hsr/skripte cifs username=<b>"HSR-Username"</b>,password=<b>"HSR-Passwort"</b>,noauto,user,iocharset=utf8 0 0
+//c206.hsr.ch/scratch /mnt/hsr/scratch cifs username=<b>"HSR-Username"</b>,password=<b>"HSR-Passwort"</b>,noauto,user,iocharset=utf8 0 0
+//c101/"HSR-Username" /mnt/hsr/<b>"HSR-Username"</b> cifs username=<b>"HSR-Username"</b>,password=<b>"HSR-Passwort"</b>,noauto,user,iocharset=utf8 0 0
+</pre>
+<p><b>Hinweis:</b> Unbedingt darauf achten, dass der Benutzer welcher mounten möchte auch Lese- und Schreibberechtigungen auf dem Mountpoint hat (hier also z.B.<code>/mnt/hsr/skripte</code>, kann sonst mit <code>chmod</code> und/oder <code>chown</code> verändert werden.)
+</p>
+<h4><span class="mw-headline" id="Optionen">Optionen</span></h4>
+<table class="wikitable">
+
+<tr class="hintergrundfarbe5">
+<th> Option </th>
+<th> Bedeutung
+</th></tr>
+<tr>
+<td><i>noauto</i> </td>
+<td> wird beim booten nicht automatisch gemountet
+</td></tr>
+<tr>
+<td><i>user</i> </td>
+<td> Ermöglicht einem normalen Benutzer das Mounten (nur der User, welcher gemountet hat, kann wieder umounten)
+</td></tr>
+<tr>
+<td><i>users</i> </td>
+<td> Ermöglicht einem normalen Benutzer das Mounten (alle anderen User können auch wieder umounten)
+</td></tr>
+<tr>
+<td><i>iocharset=utf8</i> </td>
+<td> Characterset Angabe für korrektes Darstellen von Sonderzeichen etc.
+</td></tr>
+<tr>
+<td><i>exec</i> </td>
+<td> Ermöglicht das ausführen von executables auf dem filesystem
+</td></tr>
+</table>
+<h3><span class="mw-headline" id="Eintr.C3.A4ge_in_der_.2Fetc.2Ffstab_ohne_Passw.C3.B6rter">Einträge in der /etc/fstab ohne Passwörter</span></h3>
+<p>Die Passwörter können auch ausserhalb der /etc/fstab gespeichert werden. Dazu legt man z. B. im Homeverzeichnis eine neue Datei mit Username und Passwort an:
+</p>
+<pre> $ cat &lt;&lt; EOF &gt; ~/.fstab.credentials.hsr
+ username=HSR-Benutzername
+ password=HSR-Passwort
+ EOF
+</pre>
+<p>Dort müssen noch die Berechtigungen angepasst werden, damit nicht jeder die Zugangsdaten lesen oder beschreiben kann oder gar die Freigabe mounten kann. Wenn die Datei nur dem betroffenen User gehört ($USER), kann auch nur dieser User auf diese Datei zugreifen und somit die Freigabe mounten.
+</p>
+<pre> $ chmod 400 .fstab.credentials.hsr
+ $ sudo chown $USER.root .fstab.credentials.hsr
+ $ ls -l .fstab.credentials.hsr 
+ -r-------- 1 emanuel root 41 Sep  4 14:54 .fstab.credentials.hsr
+</pre>
+<p>Die Einträge in der /etc/fstab sehen dann so aus:
+</p>
+<pre> $ grep hsr.ch /etc/fstab
+ //c206.hsr.ch/skripte           /media/hsr/skripte       cifs  credentials=/home/emanuel/.fstab.credentials.hsr,noauto,users,iocharset=utf8  0  0
+ //c206.hsr.ch/scratch           /media/hsr/scratch       cifs  credentials=/home/emanuel/.fstab.credentials.hsr,noauto,users,iocharset=utf8  0  0
+ //c206.hsr.ch/ebooks            /media/hsr/ebooks        cifs  credentials=/home/emanuel/.fstab.credentials.hsr,noauto,users,iocharset=utf8  0  0
+ //c101.hsr.ch/HSR-Benutzername  /media/hsr/HSR-Passwort  cifs  credentials=/home/emanuel/.fstab.credentials.hsr,noauto,users,iocharset=utf8  0  0
+</pre>
+<p>Jetzt kann man die Freigabe mounten:
+</p>
+<pre> $ mount /media/hsr/eduss/
+</pre>
+<!-- 
+NewPP limit report
+Cached time: 20160405111924
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.010 seconds
+Real time usage: 0.012 seconds
+Preprocessor visited node count: 38/1000000
+Preprocessor generated node count: 44/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key vshsrch_altcomphsr:pcache:idhash:42-0!*!*!!de!*!* and timestamp 20160405111924 and revision id 1123
+ -->
+</div><div class="printfooter">
+Von „<a dir="ltr" href="index.php%3Ftitle=SMB-Shares-Shell&amp;oldid=1123.html">http://altcomphsr.vshsr.ch/index.php?title=SMB-Shares-Shell&amp;oldid=1123</a>“</div>
+					<div id='catlinks' class='catlinks catlinks-allhidden'></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="column-one">
+			<h2>Navigationsmenü</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Ansichten</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-main" class="selected"><a href="index.php%3Ftitle=SMB-Shares-Shell.html" title="Seiteninhalt anzeigen [c]" accesskey="c">Seite</a></li>
+				<li id="ca-talk" class="new"><a href="http://altcomphsr.vshsr.ch/index.php?title=Diskussion:SMB-Shares-Shell&amp;action=edit&amp;redlink=1" rel="discussion" title="Diskussion zum Seiteninhalt [t]" accesskey="t">Diskussion</a></li>
+				<li id="ca-viewsource"><a href="index.php%3Ftitle=SMB-Shares-Shell&amp;action=edit.html" title="Diese Seite ist geschützt. Ihr Quelltext kann dennoch angesehen und kopiert werden. [e]" accesskey="e">Quelltext anzeigen</a></li>
+				<li id="ca-history"><a href="index.php%3Ftitle=SMB-Shares-Shell&amp;action=history.html" title="Frühere Versionen dieser Seite [h]" accesskey="h">Versionsgeschichte</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Meine Werkzeuge</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-anonuserpage"><a href="./index.php%3Ftitle=Benutzer:152.96.237.233.html" class="new" title="Benutzerseite der IP-Adresse von der aus du Änderungen durchführst [.]" accesskey=".">152.96.237.233</a></li>
+													<li id="pt-anontalk"><a href="./index.php%3Ftitle=Benutzer_Diskussion:152.96.237.233.html" class="new" title="Diskussion über Änderungen von dieser IP-Adresse [n]" accesskey="n">Diskussionsseite dieser IP</a></li>
+													<li id="pt-createaccount"><a href="./index.php%3Ftitle=Spezial:Anmelden&amp;returnto=SMB-Shares-Shell&amp;type=signup.html" title="Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.">Benutzerkonto erstellen</a></li>
+													<li id="pt-login"><a href="./index.php%3Ftitle=Spezial:Anmelden&amp;returnto=SMB-Shares-Shell.html" title="Sich anzumelden wird gerne gesehen, ist jedoch nicht zwingend erforderlich. [o]" accesskey="o">Anmelden</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="index.html" class="mw-wiki-logo" title="Hauptseite"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class='pBody'>
+							<ul>
+											<li id="n-mainpage-description"><a href="index.html" title="Hauptseite besuchen [z]" accesskey="z">Hauptseite</a></li>
+											<li id="n-currentevents"><a href="./index.php%3Ftitle=alt.comp.hsr:Aktuelle_Ereignisse.html" title="Hintergrundinformationen zu aktuellen Ereignissen">Aktuelle Ereignisse</a></li>
+											<li id="n-Statuten"><a href="./index.php%3Ftitle=Medium:Statuten.pdf.html">Statuten</a></li>
+											<li id="n-recentchanges"><a href="./index.php%3Ftitle=Spezial:Letzte_%25C3%2584nderungen.html" title="Liste der letzten Änderungen in diesem Wiki [r]" accesskey="r">Letzte Änderungen</a></li>
+											<li id="n-randompage"><a href="./index.php%3Ftitle=Spezial:Zuf%25C3%25A4llige_Seite.html" title="Zufällige Seite aufrufen [x]" accesskey="x">Zufällige Seite</a></li>
+											<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="Hilfeseite anzeigen">Hilfe</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Suche</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="http://altcomphsr.vshsr.ch/index.php" id="searchform">
+					<input type='hidden' name="title" value="Spezial:Suche"/>
+					<input type="search" name="search" placeholder="Suchen" title="alt.comp.hsr durchsuchen [f]" accesskey="f" id="searchInput" />
+					<input type="submit" name="go" value="Seite" title="Gehe direkt zu der Seite, die exakt dem eingegebenen Namen entspricht." id="searchGoButton" class="searchButton" />&#160;
+						<input type="submit" name="fulltext" value="Suchen" title="Suche nach Seiten, die diesen Text enthalten" id="mw-searchButton" class="searchButton" />
+				</form>
+
+							</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Werkzeuge</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="./index.php%3Ftitle=Spezial:Linkliste%252FSMB-Shares-Shell.html" title="Liste aller Seiten, die hierher verlinken [j]" accesskey="j">Links auf diese Seite</a></li>
+											<li id="t-recentchangeslinked"><a href="http://altcomphsr.vshsr.ch/index.php?title=Spezial:%C3%84nderungen_an_verlinkten_Seiten/SMB-Shares-Shell" title="Letzte Änderungen an Seiten, die von hier verlinkt sind [k]" accesskey="k">Änderungen an verlinkten Seiten</a></li>
+											<li id="t-specialpages"><a href="./index.php%3Ftitle=Spezial:Spezialseiten.html" title="Liste aller Spezialseiten [q]" accesskey="q">Spezialseiten</a></li>
+											<li id="t-print"><a href="index.php%3Ftitle=SMB-Shares-Shell&amp;printable=yes.html" rel="alternate" title="Druckansicht dieser Seite [p]" accesskey="p">Druckversion</a></li>
+											<li id="t-permalink"><a href="index.php%3Ftitle=SMB-Shares-Shell&amp;oldid=1123.html" title="Dauerhafter Link zu dieser Seitenversion">Permanenter Link</a></li>
+											<li id="t-info"><a href="index.php%3Ftitle=SMB-Shares-Shell&amp;action=info.html" title="Weitere Informationen über diese Seite">Seiten­informationen</a></li>
+									</ul>
+							</div>
+		</div>
+			</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<div id="f-copyrightico">
+									<a href="http://www.gnu.org/copyleft/fdl.html"><img src="resources/assets/licenses/gnu-fdl.png" alt="GNU Free Documentation License 1.2" width="88" height="31" /></a>
+							</div>
+					<div id="f-poweredbyico">
+									<a href="http://www.mediawiki.org/"><img src="resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" /></a>
+							</div>
+					<ul id="f-list">
+									<li id="lastmod"> Diese Seite wurde zuletzt am 18. Februar 2014 um 12:55 Uhr geändert.</li>
+									<li id="copyright">Der Inhalt ist verfügbar unter der Lizenz <a class="external" rel="nofollow" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License 1.2</a>, sofern nicht anders angegeben.</li>
+									<li id="privacy"><a href="http://altcomphsr.vshsr.ch/index.php?title=alt.comp.hsr:Datenschutz" title="alt.comp.hsr:Datenschutz">Datenschutz</a></li>
+									<li id="about"><a href="./index.php%3Ftitle=alt.comp.hsr:%25C3%259Cber_alt.comp.hsr.html" title="alt.comp.hsr:Über alt.comp.hsr">Über alt.comp.hsr</a></li>
+									<li id="disclaimer"><a href="http://altcomphsr.vshsr.ch/index.php?title=alt.comp.hsr:Impressum" title="alt.comp.hsr:Impressum">Impressum</a></li>
+							</ul>
+		</div>
+		</div>
+		<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({"user":"ready","user.groups":"ready"});
+} );</script>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=mediawiki.skinning.content.externallinks&amp;only=styles&amp;skin=monobook.css" />
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);
+} );</script><script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgBackendResponseTime":71});
+} );</script></body></html>

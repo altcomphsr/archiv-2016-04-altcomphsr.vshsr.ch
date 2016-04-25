@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" />
+<title>Printer-Webinterface – alt.comp.hsr</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Printer-Webinterface","wgTitle":"Printer-Webinterface","wgCurRevisionId":1070,"wgRevisionId":1070,"wgArticleId":87,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":!1,"wgPageContentLanguage":"de","wgPageContentModel":"wikitext","wgSeparatorTransformTable":[",\t.",".\t,"],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"wgMonthNamesShort":["","Jan.","Feb.","Mär.","Apr.","Mai","Jun.","Jul.","Aug.","Sep.","Okt.","Nov.","Dez."],"wgRelevantPageName":"Printer-Webinterface","wgRelevantArticleId":87,"wgIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[]});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"de"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits"]);
+} );</script>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cmediawiki.skinning.interface%257Cskins.monobook.styles&amp;only=styles&amp;skin=monobook.css" />
+<!--[if IE 6]><link rel="stylesheet" href="/skins/MonoBook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/MonoBook/IE70Fixes.css?303" media="screen" /><![endif]-->
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=site&amp;only=styles&amp;skin=monobook.css" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
+<script async="" src="load.php%3Fdebug=false&amp;lang=de&amp;modules=startup&amp;only=scripts&amp;skin=monobook"></script>
+<meta name="generator" content="MediaWiki 1.26.0" />
+<link rel="shortcut icon" href="http://altcomphsr.vshsr.ch/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="alt.comp.hsr (de)" />
+<link rel="EditURI" type="application/rsd+xml" href="api.php%3Faction=rsd" />
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html" />
+<link rel="alternate" type="application/atom+xml" title="Atom-Feed für „alt.comp.hsr“" href="./index.php%3Ftitle=Spezial:Letzte_%25C3%2584nderungen&amp;feed=atom" />
+</head>
+<body class="mediawiki ltr sitedir-ltr capitalize-all-nouns ns-0 ns-subject page-Printer-Webinterface skin-monobook action-view">
+<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="de">Printer-Webinterface</h1>
+				
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">Aus alt.comp.hsr</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Wechseln zu: <a href="index.php%3Ftitle=Printer-Webinterface.html#column-one">Navigation</a>, <a href="index.php%3Ftitle=Printer-Webinterface.html#searchInput">Suche</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" lang="de" dir="ltr" class="mw-content-ltr"><p>Die Konfiguration über das Webinterface von Cups läuft folgendermassen ab:
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Inhaltsverzeichnis</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="index.php%3Ftitle=Printer-Webinterface.html#Vorbereitung"><span class="tocnumber">1</span> <span class="toctext">Vorbereitung</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="index.php%3Ftitle=Printer-Webinterface.html#Beispiel_f.C3.BCr_iR7086"><span class="tocnumber">2</span> <span class="toctext">Beispiel für iR7086</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="index.php%3Ftitle=Printer-Webinterface.html#Beispiel_f.C3.BCr_CLC4040"><span class="tocnumber">3</span> <span class="toctext">Beispiel für CLC4040</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="index.php%3Ftitle=Printer-Webinterface.html#Benutzername_und_Passwort_.C3.A4ndern"><span class="tocnumber">4</span> <span class="toctext">Benutzername und Passwort ändern</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Vorbereitung">Vorbereitung</span></h2>
+<p>Samba muss installiert sein, damit man auf die Windows-Druckerfreigabe zugreifen kann. Damit man sich erfolgreich am Server authentifizieren kann, muss man sich in der HSR-Workgroup befinden. Dies stellt man in der Datei <i>/etc/samba/smb.conf</i> in der Sektion '[Global]' ein:
+</p><p>Konfigurationsdatei von Samba bearbeiten:
+</p>
+<pre>sudo vi /etc/smb/samba.conf
+</pre>
+<p>In der Sektion '[Global]' die Workgroup angeben:
+</p>
+<pre>workgroup = hsr
+</pre>
+<p>Mit dem Samba-Client kann man prüfen, ob man sich erfolgreich am Druckserver authentifizieren kann:
+</p>
+<pre>$ smbclient  -U eduss -L sid00771.hsr.ch
+Enter eduss's password: 
+Domain=[HSR] OS=[Windows Server 2008 R2 Standard 7601 Service Pack 1] Server=[Windows Server 2008 R2 Standard 6.1]
+[...]
+       MFP-BW          Printer   MFP-BW
+       MFP-Color       Printer   MFP-Color
+[...]
+</pre>
+<p>Das ist wichtig, damit die Druckerkonfiguration funktioniert.
+</p>
+<h2><span class="mw-headline" id="Beispiel_f.C3.BCr_iR7086">Beispiel für iR7086</span></h2>
+<p>Um die Aktuellen Treiber zu haben ist zuerst die Anleitung <a href="index.php%3Ftitle=Printer-Driver.html" title="Printer-Driver">Printer-Driver</a> abzuarbeiten.
+</p><p>1. Mit einem Webbrowser <a rel="nofollow" class="external free" href="http://localhost:631/">http://localhost:631/</a> öffnen
+</p><p>2. Auf der Startseite auf "Drucker Hinzufügen" klicken
+</p>
+<pre>Name: FolowMeIr7086
+Ort: HSR
+Beschreibung: FolowMeIr7086
+(Können auch selbst gewählt werden)
+</pre>
+<p>3. "Fortsetzen" klicken
+</p>
+<pre>Gerät: Windows Printer via SAMBA
+</pre>
+<p>4. "Fortsetzen" klicken
+</p>
+<pre>Geräte URI: smb://benutzername:passwort@hsr/sid00071:139/ir7086
+(HSR-Benutzername und Passwort)
+</pre>
+<p>5. "Fortsetzen" klicken
+</p>
+<pre>Marke: Canon
+</pre>
+<p>6. "Fortsetzen" klicken
+</p>
+<pre>Modell: Canon iR7086-7105 PCL (De)
+</pre>
+<p>7. "Drucker hinzufügen" klicken
+</p><p>8. Nun können noch HSR-spezifische Einstellungen für den Drucker vorgenommen werden:
+</p>
+<pre><a rel="nofollow" class="external free" href="http://localhost:631/printers/">http://localhost:631/printers/</a> öffnen
+Bei dem Drucker auf "Druckereinstellungen festlegen" klicken
+</pre>
+<pre>Papierzufuhroptionen: Seitliches Papiermagazin W1
+Ausgabeoptionen: Sattle Finisher V2
+Locher: Lochereinheit (nicht Profilocher)
+Zuschiesseinheit C1: ein
+(Daten mit ID ermitteln)
+</pre>
+<p>9. "Druckereinstellungen festlegen" klicken
+</p><p>Nun sollte der Drucker funktionieren.
+</p>
+<h2><span class="mw-headline" id="Beispiel_f.C3.BCr_CLC4040">Beispiel für CLC4040</span></h2>
+<p>1. Mit einem Webbrowser <a rel="nofollow" class="external free" href="http://localhost:631/">http://localhost:631/</a> öffnen
+</p><p>2. Auf der Startseite auf "Drucker Hinzufügen" klicken
+</p>
+<pre>Name: FolowMeCLC4040
+Ort: HSR
+Beschreibung: FolowMeCLC4040
+(Können auch selbst gewählt werden)
+</pre>
+<p>3. "Fortsetzen" klicken
+</p>
+<pre>Gerät: Windows Printer via SAMBA
+</pre>
+<p>4. "Fortsetzen" klicken
+</p>
+<pre>Geräte URI: smb://benutzername:passwort@hsr/sid00071:139/clc4040ps
+(HSR-Benutzername und Passwort)
+</pre>
+<p>5. "Fortsetzen" klicken
+</p>
+<pre>Marke: Canon
+</pre>
+<p>6. "Fortsetzen" klicken
+</p>
+<pre>Modell: Canon CLC4040-H1 PS Ver1.0 (De)
+</pre>
+<p>7. "Drucker hinzufügen" klicken
+</p><p>8. Nun können noch HSR-Spezifische Einstellungen für den Drucker vorgenommen werden:
+</p>
+<pre><a rel="nofollow" class="external free" href="http://localhost:631/printers/">http://localhost:631/printers/</a> öffnen
+Bei dem Drucker auf "Druckereinstellungen festlegen" klicken
+</pre>
+<pre>(Die HSR-Spezifischen Einstellungen müssten noch ermittelt werden)
+</pre>
+<p>9. "Druckereinstellungen festlegen" klicken
+</p><p>Nun sollte der Drucker funktionieren.
+</p>
+<h2><span class="mw-headline" id="Benutzername_und_Passwort_.C3.A4ndern">Benutzername und Passwort ändern</span></h2>
+<p>Falls der Benutzername oder das Passwort geändert wurde, ist am einfachsten dies in /etc/cups/printers.conf anzupassen und CUPS neu zu starten.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20160405080411
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.005 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 15/1000000
+Preprocessor generated node count: 20/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key vshsrch_altcomphsr:pcache:idhash:87-0!*!0!!de!*!* and timestamp 20160405080411 and revision id 1070
+ -->
+</div><div class="printfooter">
+Von „<a dir="ltr" href="index.php%3Ftitle=Printer-Webinterface&amp;oldid=1070.html">http://altcomphsr.vshsr.ch/index.php?title=Printer-Webinterface&amp;oldid=1070</a>“</div>
+					<div id='catlinks' class='catlinks catlinks-allhidden'></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="column-one">
+			<h2>Navigationsmenü</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Ansichten</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-main" class="selected"><a href="index.php%3Ftitle=Printer-Webinterface.html" title="Seiteninhalt anzeigen [c]" accesskey="c">Seite</a></li>
+				<li id="ca-talk"><a href="./index.php%3Ftitle=Diskussion:Printer-Webinterface.html" rel="discussion" title="Diskussion zum Seiteninhalt [t]" accesskey="t">Diskussion</a></li>
+				<li id="ca-viewsource"><a href="index.php%3Ftitle=Printer-Webinterface&amp;action=edit.html" title="Diese Seite ist geschützt. Ihr Quelltext kann dennoch angesehen und kopiert werden. [e]" accesskey="e">Quelltext anzeigen</a></li>
+				<li id="ca-history"><a href="index.php%3Ftitle=Printer-Webinterface&amp;action=history.html" title="Frühere Versionen dieser Seite [h]" accesskey="h">Versionsgeschichte</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Meine Werkzeuge</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-anonuserpage"><a href="./index.php%3Ftitle=Benutzer:152.96.237.233.html" class="new" title="Benutzerseite der IP-Adresse von der aus du Änderungen durchführst [.]" accesskey=".">152.96.237.233</a></li>
+													<li id="pt-anontalk"><a href="./index.php%3Ftitle=Benutzer_Diskussion:152.96.237.233.html" class="new" title="Diskussion über Änderungen von dieser IP-Adresse [n]" accesskey="n">Diskussionsseite dieser IP</a></li>
+													<li id="pt-createaccount"><a href="./index.php%3Ftitle=Spezial:Anmelden&amp;returnto=Printer-Webinterface&amp;type=signup.html" title="Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.">Benutzerkonto erstellen</a></li>
+													<li id="pt-login"><a href="./index.php%3Ftitle=Spezial:Anmelden&amp;returnto=Printer-Webinterface.html" title="Sich anzumelden wird gerne gesehen, ist jedoch nicht zwingend erforderlich. [o]" accesskey="o">Anmelden</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="index.html" class="mw-wiki-logo" title="Hauptseite"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class='pBody'>
+							<ul>
+											<li id="n-mainpage-description"><a href="index.html" title="Hauptseite besuchen [z]" accesskey="z">Hauptseite</a></li>
+											<li id="n-currentevents"><a href="./index.php%3Ftitle=alt.comp.hsr:Aktuelle_Ereignisse.html" title="Hintergrundinformationen zu aktuellen Ereignissen">Aktuelle Ereignisse</a></li>
+											<li id="n-Statuten"><a href="./index.php%3Ftitle=Medium:Statuten.pdf.html">Statuten</a></li>
+											<li id="n-recentchanges"><a href="./index.php%3Ftitle=Spezial:Letzte_%25C3%2584nderungen.html" title="Liste der letzten Änderungen in diesem Wiki [r]" accesskey="r">Letzte Änderungen</a></li>
+											<li id="n-randompage"><a href="./index.php%3Ftitle=Spezial:Zuf%25C3%25A4llige_Seite.html" title="Zufällige Seite aufrufen [x]" accesskey="x">Zufällige Seite</a></li>
+											<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="Hilfeseite anzeigen">Hilfe</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Suche</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="http://altcomphsr.vshsr.ch/index.php" id="searchform">
+					<input type='hidden' name="title" value="Spezial:Suche"/>
+					<input type="search" name="search" placeholder="Suchen" title="alt.comp.hsr durchsuchen [f]" accesskey="f" id="searchInput" />
+					<input type="submit" name="go" value="Seite" title="Gehe direkt zu der Seite, die exakt dem eingegebenen Namen entspricht." id="searchGoButton" class="searchButton" />&#160;
+						<input type="submit" name="fulltext" value="Suchen" title="Suche nach Seiten, die diesen Text enthalten" id="mw-searchButton" class="searchButton" />
+				</form>
+
+							</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Werkzeuge</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="./index.php%3Ftitle=Spezial:Linkliste%252FPrinter-Webinterface.html" title="Liste aller Seiten, die hierher verlinken [j]" accesskey="j">Links auf diese Seite</a></li>
+											<li id="t-recentchangeslinked"><a href="http://altcomphsr.vshsr.ch/index.php?title=Spezial:%C3%84nderungen_an_verlinkten_Seiten/Printer-Webinterface" title="Letzte Änderungen an Seiten, die von hier verlinkt sind [k]" accesskey="k">Änderungen an verlinkten Seiten</a></li>
+											<li id="t-specialpages"><a href="./index.php%3Ftitle=Spezial:Spezialseiten.html" title="Liste aller Spezialseiten [q]" accesskey="q">Spezialseiten</a></li>
+											<li id="t-print"><a href="index.php%3Ftitle=Printer-Webinterface&amp;printable=yes.html" rel="alternate" title="Druckansicht dieser Seite [p]" accesskey="p">Druckversion</a></li>
+											<li id="t-permalink"><a href="index.php%3Ftitle=Printer-Webinterface&amp;oldid=1070.html" title="Dauerhafter Link zu dieser Seitenversion">Permanenter Link</a></li>
+											<li id="t-info"><a href="index.php%3Ftitle=Printer-Webinterface&amp;action=info.html" title="Weitere Informationen über diese Seite">Seiten­informationen</a></li>
+									</ul>
+							</div>
+		</div>
+			</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<div id="f-copyrightico">
+									<a href="http://www.gnu.org/copyleft/fdl.html"><img src="resources/assets/licenses/gnu-fdl.png" alt="GNU Free Documentation License 1.2" width="88" height="31" /></a>
+							</div>
+					<div id="f-poweredbyico">
+									<a href="http://www.mediawiki.org/"><img src="resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" /></a>
+							</div>
+					<ul id="f-list">
+									<li id="lastmod"> Diese Seite wurde zuletzt am 5. Oktober 2012 um 08:40 Uhr geändert.</li>
+									<li id="copyright">Der Inhalt ist verfügbar unter der Lizenz <a class="external" rel="nofollow" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License 1.2</a>, sofern nicht anders angegeben.</li>
+									<li id="privacy"><a href="http://altcomphsr.vshsr.ch/index.php?title=alt.comp.hsr:Datenschutz" title="alt.comp.hsr:Datenschutz">Datenschutz</a></li>
+									<li id="about"><a href="./index.php%3Ftitle=alt.comp.hsr:%25C3%259Cber_alt.comp.hsr.html" title="alt.comp.hsr:Über alt.comp.hsr">Über alt.comp.hsr</a></li>
+									<li id="disclaimer"><a href="http://altcomphsr.vshsr.ch/index.php?title=alt.comp.hsr:Impressum" title="alt.comp.hsr:Impressum">Impressum</a></li>
+							</ul>
+		</div>
+		</div>
+		<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({"user":"ready","user.groups":"ready"});
+} );</script>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=mediawiki.skinning.content.externallinks&amp;only=styles&amp;skin=monobook.css" />
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);
+} );</script><script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgBackendResponseTime":94});
+} );</script></body></html>

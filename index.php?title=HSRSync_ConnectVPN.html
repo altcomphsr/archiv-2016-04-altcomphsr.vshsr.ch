@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" />
+<title>HSRSync ConnectVPN – alt.comp.hsr</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"HSRSync_ConnectVPN","wgTitle":"HSRSync ConnectVPN","wgCurRevisionId":1175,"wgRevisionId":1175,"wgArticleId":243,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":!1,"wgPageContentLanguage":"de","wgPageContentModel":"wikitext","wgSeparatorTransformTable":[",\t.",".\t,"],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"wgMonthNamesShort":["","Jan.","Feb.","Mär.","Apr.","Mai","Jun.","Jul.","Aug.","Sep.","Okt.","Nov.","Dez."],"wgRelevantPageName":"HSRSync_ConnectVPN","wgRelevantArticleId":243,"wgIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[]});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"de"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits"]);
+} );</script>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cmediawiki.skinning.interface%257Cskins.monobook.styles&amp;only=styles&amp;skin=monobook.css" />
+<!--[if IE 6]><link rel="stylesheet" href="/skins/MonoBook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/MonoBook/IE70Fixes.css?303" media="screen" /><![endif]-->
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=site&amp;only=styles&amp;skin=monobook.css" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
+<script async="" src="load.php%3Fdebug=false&amp;lang=de&amp;modules=startup&amp;only=scripts&amp;skin=monobook"></script>
+<meta name="generator" content="MediaWiki 1.26.0" />
+<link rel="shortcut icon" href="http://altcomphsr.vshsr.ch/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="alt.comp.hsr (de)" />
+<link rel="EditURI" type="application/rsd+xml" href="api.php%3Faction=rsd" />
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html" />
+<link rel="alternate" type="application/atom+xml" title="Atom-Feed für „alt.comp.hsr“" href="./index.php%3Ftitle=Spezial:Letzte_%25C3%2584nderungen&amp;feed=atom" />
+</head>
+<body class="mediawiki ltr sitedir-ltr capitalize-all-nouns ns-0 ns-subject page-HSRSync_ConnectVPN skin-monobook action-view">
+<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="de">HSRSync ConnectVPN</h1>
+				
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">Aus alt.comp.hsr</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Wechseln zu: <a href="index.php%3Ftitle=HSRSync_ConnectVPN.html#column-one">Navigation</a>, <a href="index.php%3Ftitle=HSRSync_ConnectVPN.html#searchInput">Suche</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" lang="de" dir="ltr" class="mw-content-ltr"><h2><span class="mw-headline" id="Screenshot_des_Auswahldialoges">Screenshot des Auswahldialoges</span></h2>
+<p><a href="./index.php%3Ftitle=Datei:Hsrsync_screenshot.png.html" class="image"><img alt="Hsrsync screenshot.png" src="images/9/9e/Hsrsync_screenshot.png" width="594" height="386" /></a>
+</p>
+<h2><span class="mw-headline" id="Datei:_hsr_sync.sh">Datei: hsr_sync.sh</span></h2>
+<pre>
+#!/bin/bash
+
+##########################################################################################################
+#                                                                                                        #
+# Skript zum Synchronisieren von lokalen Verzeichnissen mit dem HSR Skriptserver                         #
+# Erstellt von U. Bruhin, 12.03.2013                                                                     #
+#                                                                                                        #
+# &quot;THE BEER-WARE LICENSE&quot; (Revision 42):                                                                 #
+# U. Bruhin wrote this file. As long as you retain this notice you                                       #
+# can do whatever you want with this stuff. If we meet some day, and you think                           #
+# this stuff is worth it, you can buy me a beer.                                                         #
+#                                                                                                        #
+##########################################################################################################
+#                                                                                                        #
+# Funktion des Skriptes:                                                                                 #
+#                                                                                                        #
+# - Baut die VPN-Verbindung auf (falls noch nicht aufgebaut und nicht mit dem HSR WLAN verbunden) [vpnc] #
+# - Bindet die Freigaben &quot;Skripte&quot;, &quot;Scratch&quot; und der Benutzerordner ins lokale Dateisystem ein [mount]  #
+# - Synchronisiert die Skripte-Ordner einzelner Module mit lokalen Verzeichnissen [rsync]                #
+#   - Es werden KEINE lokalen Dateien gelöscht                                                           #
+#   - Alte Dateien werden überschrieben wenn sie auf dem Server aktualisiert wurden                      #
+#   - Zu jedem einzelnen Modul können Spezialparameter eingerichtet werden,                              #
+#     z.B. um bestimmte Verzeichnisse von der Synchronisation auszuschliessen (--exclude)                #
+#   - Das Synchronisationsverhalten kann verändert werden, nähere Infos siehe &quot;rsync&quot; Dokumentation      #
+# - Hängt die Freigaben wieder aus dem lokalen Dateisystem aus [umount]                                  #
+# - Trennt die VPN Verbindung wieder [vpnc-disconnect]                                                   #
+#                                                                                                        #
+##########################################################################################################
+#                                                                                                        #
+# Voraussetzungen (unter Linux über den Paketmanager/Softwarecenter installierbar):                      #
+#                                                                                                        #
+# - &quot;vpnc&quot; (http://www.vpnc.org/)                                                                        #
+# - &quot;rsync&quot; (http://rsync.samba.org/)                                                                    #
+# - &quot;dialog&quot; (http://hightek.org/dialog/)                                                                #
+# - &quot;iputils-ping&quot; (für den Befehl &quot;ping&quot;, ist normalerweise schon vorinstalliert)                       #
+#                                                                                                        #
+##########################################################################################################
+#                                                                                                        #
+# Getestet unter:                                                                                        #
+#                                                                                                        #
+#  - Ubuntu 12.10 x64                                                                                    #
+#  - Ubuntu 13.04 x64                                                                                    #
+#                                                                                                        #
+# Ohne Dialog ist das Skript evtl. auch unter Mac OS X lauffähig. Rückmeldungen sind erwünscht!          #
+#                                                                                                        #
+##########################################################################################################
+#                                                                                                        #
+# Anleitung:                                                                                             #
+#                                                                                                        #
+# - Einstellungen hier im Skript tätigen (HSR Zugangsdaten, Zielordner usw.)                             #
+# - In der Datei &quot;hsr_sync_list.txt&quot; die zu synchronisierenden Verzeichnisse eintragen                   #
+#   Achtung: Keine Schreibfehler machen! 4-fach Doppelpunkte zur Trennung nicht vergessen!               #
+# - Skript ausführbar machen: Rechtsklick, Eigenschaften, Zugriffsrechte, &quot;Datei als Programm ausführen&quot; #
+# - Skript ausführen mit Doppelklick, und dann &quot;Im Terminal öffnen&quot; (unter Ubuntu)                       #
+# - ...oder im Terminal mit &quot;./hsr_sync.sh&quot;                                                              #
+# - Das Skript fragt am Anfang nach dem Root-Passwort (nicht nach dem HSR Passwort!)                     #
+#                                                                                                        #
+# Hinweis:   Wenn nach dem Doppelklick auf die Datei direkt der Editor geöffnet wird,                    #
+#            muss man beim Dateimanager (&quot;Nautilus&quot;) die Abfrage aktivieren.                             #
+#            Dazu einfach in einem Terminal den folgenden Befehl eingeben:                               #
+#                gsettings set org.gnome.nautilus.preferences executable-text-activation ask             #
+#                                                                                                        #
+##########################################################################################################
+#                                                                                                        #
+# Einstellungen:                                                                                         #
+#                                                                                                        #
+# USERNAME:                                                                                              #
+#   Benutzername für HSR-Login                                                                           #
+#                                                                                                        #
+# PASSWORD:                                                                                              #
+#   Passwort für HSR-Login                                                                               #
+#   Achtung: Das Passwort ist als Klartext in dieser Datei gespeichert,                                  #
+#            die Datei muss also vor den Blicken von &quot;neugierigen Mitmenschen&quot; gut geschützt werden!     #
+#   Man kann das Passwort auch leer lassen, dann wird bei jedem Aufruf des Skriptes danach gefragt.      #
+#                                                                                                        #
+# GROUP_NAME / GROUP_PASSWORD:                                                                           #
+#   Gruppenname und Gruppenpasswort der HSR (für alle Studenten identisch)                               #
+#   Diese Angaben darf ich hier nicht veröffentlichen, ihr müsst es selber unter folgendem Ort holen:    #
+#   -&gt; Unter HSR Intern einloggen (https://www.hsr.ch/HSR-intern.90.0.html)                              #
+#   -&gt; IT-Informatikdienste                                                                              #
+#   -&gt; Persoenliches Notebook                                                                            #
+#   -&gt; Zugang zum Netzwerk                                                                               #
+#   -&gt; VPN-Verbindung HSR                                                                                #
+#   -&gt; Informationen zur Einrichtung mobiler Clients                                                     #
+#   -&gt; Einstellungen für Mobile Clients bei WLAN, VPN und E-Mail                                         #
+#   -&gt; Seite 2 im PDF (&quot;Gruppenname&quot; und &quot;Gruppenpasswort&quot;)                                              #
+#                                                                                                        #
+# MOUNTDIR_SCRIPTS:                                                                                      #
+#   Hierhin wird der Skripte-Ordner temporär eingehängt (ohne Slash am Ende!)                            #
+#   Der Pfad ist eher unwichtig, unter Linux empfiehlt sich z.B. &quot;/media/HSR-Skripte&quot;                    #
+#   Der Ordner kann, muss aber nicht existieren (wird angelegt), er muss aber auf jeden Fall leer sein!  #
+#   Unter Mac OS X empfiehlt sich der Ordner &quot;/Volumes/HSR-Skripte&quot;                                      #
+#                                                                                                        #
+# MOUNTDIR_SCRATCH:                                                                                      #
+#   Hierhin wird der Scratch-Ordner temporär eingehängt (ohne Slash am Ende!)                            #
+#   Der Pfad ist eher unwichtig, unter Linux empfiehlt sich z.B. &quot;/media/HSR-Scratch&quot;                    #
+#   Der Ordner kann, muss aber nicht existieren (wird angelegt), er muss aber auf jeden Fall leer sein!  #
+#   Unter Mac OS X empfiehlt sich der Ordner &quot;/Volumes/HSR-Scratch&quot;                                      #
+#                                                                                                        #
+# MOUNTDIR_USER:                                                                                         #
+#   Hierhin wird der HSR_Benutzerordner temporär eingehängt (ohne Slash am Ende!)                        #
+#   Der Pfad ist eher unwichtig, unter Linux empfiehlt sich z.B. &quot;/media/HSR-BENUTZERNAME&quot;               #
+#   Der Ordner kann, muss aber nicht existieren (wird angelegt), er muss aber auf jeden Fall leer sein!  #
+#   Unter Mac OS X empfiehlt sich der Ordner &quot;/Volumes/HSR-BENUTZERNAME&quot;                                 #
+#                                                                                                        #
+# DESTINATION:                                                                                           #
+#   Ziel-Ordner (mit Slash am Ende!)                                                                     #
+#   Hierhin werden die Verzeichnisse vom Skriptserver hinkopiert.                                        #
+#   Beispiel (Linux): &quot;/home/benutzername/Dokumente/HSR/&quot;                                                #
+#                                                                                                        #
+# SYNC_LIST_FILE:                                                                                        #
+#   Den Pfad zur Textdatei mit den zu synchronisierenden Verzeichnissen                                  #
+#   Falls die Datei im gleichen Ordner wie dieses Skript liegt,                                          #
+#   dann kann man hier &quot;./hsr_sync_list.txt&quot; angeben.                                                    #
+#                                                                                                        #
+# PRAEFIX:                                                                                               #
+#   Ziel-Unterordner                                                                                     #
+#   z.B. &quot;/Skriptserver/&quot; für &quot;.../HSR/An2E/Skriptserver/...&quot; (mit Slash am Anfang und Ende!)            #
+#   Falls keine Unterordner gewünscht sind: PRAEFIX=&quot;/&quot;                                                  #
+#                                                                                                        #
+# MAXSIZE:                                                                                               #
+#   Dateien, die grösser sind als hier angegeben, werden nicht heruntergeladen (z.B. &quot;200MB&quot;)            #
+#                                                                                                        #
+# MACOSX:                                                                                                #
+#   Legt fest, ob Mac OS X verwendet wird                                                                #
+#                                                                                                        #
+# NODIALOG:                                                                                              #
+#   Legt fest, ob ein Dialog angezeigt werden soll, um abzufragen was der Benutzer tun möchte.           #
+#   Wenn &quot;false&quot;, dann startet das Skript direkt nach dem öffnen die Synchronisation                     #
+#   und beendet sich danach automatisch wieder.                                                          #
+#   Unter Mac OS X ist &quot;dialog&quot; eventuell nicht verfügbar, dann muss hier &quot;true&quot; eingestellt werden.     #
+#                                                                                                        #
+##########################################################################################################
+
+USERNAME=&quot;xyz&quot; # &lt;-- Wichtig!
+PASSWORD=&quot;xyz&quot; # &lt;-- Wichtig!
+GROUP_NAME=&quot;xyz&quot; # &lt;-- Wichtig!
+GROUP_PASSWORD=&quot;xyz&quot; # &lt;-- Wichtig!
+MOUNTDIR_SCRIPTS=&quot;/media/HSR-Skripte&quot;
+MOUNTDIR_SCRATCH=&quot;/media/HSR-Scratch&quot;
+MOUNTDIR_USER=&quot;/media/HSR-$USERNAME&quot;
+DESTINATION=&quot;/home/benutzername/HSR/&quot; # &lt;-- Wichtig!
+SYNC_LIST_FILE=&quot;./hsr_sync_list.txt&quot;
+PRAEFIX=&quot;/Skriptserver/&quot;
+MAXSIZE=&quot;200MB&quot;
+MACOSX=false
+NODIALOG=false
+
+##########################################################################################################
+#                                                                                                        #
+# Ab hier nichts mehr verändern!                                                                         #
+#                                                                                                        #
+##########################################################################################################
+
+HSR_SCRIPTSERVER=&quot;c206.hsr.ch&quot;
+HSR_SCRATCHSERVER=&quot;c206.hsr.ch&quot;
+HSR_USERSERVER=&quot;c101.hsr.ch&quot;
+
+# Verzeichnis wechseln
+locationOfScript=$(dirname &quot;$(readlink -e &quot;$0&quot;)&quot;)
+cd $locationOfScript
+
+##########################################################################################################
+#                                                                                                        #
+# Funktionen                                                                                             #
+#                                                                                                        #
+##########################################################################################################
+
+# Prüfen ob alle erforderlichen Pakete installiert sind
+check_dependencies()
+{
+    command -v vpnc &gt;/dev/null 2&gt;&amp;1 || { echo -e &gt;&amp;2 &quot;Das Paket 'vpnc' ist nicht installiert!&quot;; sleep 5; exit; }
+    command -v rsync &gt;/dev/null 2&gt;&amp;1 || { echo -e &gt;&amp;2 &quot;Das Paket 'rsync' ist nicht installiert!&quot;; sleep 5; exit; }
+    if&#160;! $NODIALOG; then
+      command -v dialog &gt;/dev/null 2&gt;&amp;1 || { echo -e &gt;&amp;2 &quot;Das Paket 'dialog' ist nicht installiert!&quot;; sleep 5; exit; }
+    fi;
+}
+
+# Einstellungen auf Konsole rausschreiben
+print_settings()
+{
+    echo -e &quot;\nHSR Synchronisationsskript von U. Bruhin&quot;
+    echo -e &quot;Das Skript befindet sich im Ordner $locationOfScript&quot;
+    echo -e &quot;DESTINATION=$DESTINATION&quot;
+    echo -e &quot;MAXSIZE=$MAXSIZE\n\n&quot;
+}
+
+# Freigabe aushängen und VPN-Verbindung trennen, falls noch verbunden (z.B. nach einem Abbruch des Skriptes)
+reset_connection()
+{
+    sudo umount -f $MOUNTDIR_SCRIPTS &gt;/dev/null 2&gt;/dev/null
+    sudo umount -f $MOUNTDIR_SCRATCH &gt;/dev/null 2&gt;/dev/null
+    sudo umount -f $MOUNTDIR_USER &gt;/dev/null 2&gt;/dev/null
+    sudo vpnc-disconnect &gt;/dev/null 2&gt;/dev/null
+    sleep 1
+}
+
+# Prüfen ob nicht schon Ordner im Mountverzeichnis existieren
+check_for_empty_mountdirs()
+{
+    if [ -d &quot;$MOUNTDIR_SCRIPTS&quot; ] &amp;&amp; [ &quot;$(ls -A $MOUNTDIR_SCRIPTS)&quot; ]; then
+        echo &quot;Es sind bereits Ordner in $MOUNTDIR_SCRIPTS vorhanden!&quot;
+        sleep 5;
+        exit;
+    fi
+    if [ -d &quot;$MOUNTDIR_SCRATCH&quot; ] &amp;&amp; [ &quot;$(ls -A $MOUNTDIR_SCRATCH)&quot; ]; then
+        echo &quot;Es sind bereits Ordner in $MOUNTDIR_SCRATCH vorhanden!&quot;
+        sleep 5;
+        exit;
+    fi
+    if [ -d &quot;$MOUNTDIR_USER&quot; ] &amp;&amp; [ &quot;$(ls -A $MOUNTDIR_USER)&quot; ]; then
+        echo &quot;Es sind bereits Ordner in $MOUNTDIR_USER vorhanden!&quot;
+        sleep 5;
+        exit;
+    fi
+}
+
+# Zielordner erstellen
+make_moundirs()
+{
+    sudo mkdir -p $MOUNTDIR_SCRIPTS
+    sudo mkdir -p $MOUNTDIR_SCRATCH
+    sudo mkdir -p $MOUNTDIR_USER
+}
+
+# VPN-Verbindung aufbauen
+connect_vpn()
+{
+    # VPNC Konfigurationsdatei erstellen
+    echo &quot;IPSec gateway vpn.hsr.ch&quot; &gt; vpnc.pcf
+    echo &quot;IPSec ID $GROUP_NAME&quot; &gt;&gt; vpnc.pcf
+    echo &quot;IPSec secret $GROUP_PASSWORD&quot; &gt;&gt; vpnc.pcf
+    echo &quot;Xauth username $USERNAME&quot; &gt;&gt; vpnc.pcf
+    echo &quot;Xauth password $PASSWORD&quot; &gt;&gt; vpnc.pcf
+    #echo &quot;IKE Authmode psk&quot; &gt;&gt; vpnc.pcf
+    #echo &quot;IKE DH Group dh2&quot; &gt;&gt; vpnc.pcf
+
+    sudo vpnc &quot;./vpnc.pcf&quot;
+    sleep 1
+    
+    # Prüfen ob die Verbindung erfolgreich aufgebaut wurde
+    ping -c 1 -W 5 &quot;$HSR_SCRIPTSERVER&quot; &gt; /dev/null 2&gt;&amp;1
+    if&#160;! [ $? -eq 0 ]; then
+        echo &quot;Die VPN-Verbindung konnte nicht aufgebaut werden!&quot;
+        sleep 5;
+        exit;
+    fi
+}
+
+# VPN-Verbindung trennen
+disconnect_vpn()
+{
+    sudo vpnc-disconnect
+    rm &quot;./vpnc.pcf&quot;
+}
+
+# Freigaben mounten
+mount_shares()
+{
+    if $MACOSX; then
+        mount_smbfs &quot;smb://$USERNAME:$PASSWORD@$HSR_SCRIPTSERVER/skripte&quot; $MOUNTDIR_SCRIPTS
+        mount_smbfs &quot;smb://$USERNAME:$PASSWORD@$HSR_SCRATCHSERVER/scratch&quot; $MOUNTDIR_SCRATCH
+        mount_smbfs &quot;smb://$USERNAME:$PASSWORD@$HSR_USERSERVER/$USERNAME&quot; $MOUNTDIR_USER
+    else
+        sudo mount -t cifs &quot;//$HSR_SCRIPTSERVER/skripte&quot; $MOUNTDIR_SCRIPTS -o user=&quot;$USERNAME&quot;,password=&quot;$PASSWORD&quot;,iocharset=utf8
+        sudo mount -t cifs &quot;//$HSR_SCRATCHSERVER/scratch&quot; $MOUNTDIR_SCRATCH -o user=&quot;$USERNAME&quot;,password=&quot;$PASSWORD&quot;,iocharset=utf8,uid=1000,gid=1000
+        sudo mount -t cifs &quot;//$HSR_USERSERVER/$USERNAME&quot; $MOUNTDIR_USER -o user=&quot;$USERNAME&quot;,password=&quot;$PASSWORD&quot;,iocharset=utf8,uid=1000,gid=1000
+    fi
+    
+    # Prüfen ob Skripte erfolgreich eingehängt
+    if&#160;! [ &quot;$(ls -A $MOUNTDIR_SCRIPTS)&quot; ]; then
+        echo &quot;Die Freigabe ist nicht eingehängt / konnte nicht eingehängt werden!&quot;
+        reset_connection
+        sleep 5;
+        exit;
+    fi
+}
+
+# Freigaben aushängen
+umount_shares()
+{
+    sudo umount -f $MOUNTDIR_SCRIPTS
+    sudo umount -f $MOUNTDIR_SCRATCH
+    sudo umount -f $MOUNTDIR_USER
+}
+
+synchronisation()
+{
+    while read LINE; do
+    
+        # Zeile aus &quot;hsr_sync_list.txt&quot; in Variablen laden und Leerzeichen am Anfang und am Ende entfernen
+        FOLDER=$(echo &quot;$LINE&quot; | awk -F'::::' '{print $1}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+        LINK=$(echo &quot;$LINE&quot; | awk -F'::::' '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+        OPTIONS=$(echo &quot;$LINE&quot; | awk -F'::::' '{print $3}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+        # Zeile überspringen falls Ursprung oder Ziel leer sind, oder die Zeile mit einem # beginnt
+        if [ -z &quot;$FOLDER&quot; ]; then continue; fi
+        if [ -z &quot;$LINK&quot; ]; then continue; fi
+        if [[ $FOLDER == \#* ]]; then continue; fi
+
+        echo &quot;Beginne mit $FOLDER...&quot;
+
+        # Zielordner erstellen falls noch nicht vorhanden
+        mkdir -p &quot;$DESTINATION$FOLDER$PRAEFIX&quot;
+
+        # Synchronisation
+        rsync -av --progress --max-size=$MAXSIZE --modify-window=1 $OPTIONS &quot;$MOUNTDIR_SCRIPTS/$LINK&quot; &quot;$DESTINATION$FOLDER$PRAEFIX&quot;
+
+        echo -e &quot;\nFertig mit $FOLDER\n\n&quot;
+        
+    done &lt; $SYNC_LIST_FILE
+}
+
+# Grafisches Auswahlmenü anzeigen
+choose_action()
+{
+    RESULT=`dialog    --backtitle &quot;HSR Synchronisations-Skript von U. Bruhin&quot; \
+                      --menu &quot;Die Verbindung wurde erfolgreich hergestellt.\n\nOption wählen:&quot; 0 0 0 \
+                      1 &quot;Synchronisation starten&quot; \
+                      2 &quot;Verbindung trennen und Skript beenden&quot; \
+                      3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3`
+
+    echo $RESULT;
+}
+
+##########################################################################################################
+#                                                                                                        #
+# Hauptprogramm                                                                                          #
+#                                                                                                        #
+##########################################################################################################
+
+check_dependencies
+print_settings
+reset_connection
+check_for_empty_mountdirs
+make_moundirs
+
+if [ -z &quot;$PASSWORD&quot; ]; then
+    read -s -p &quot;HSR-Benutzerpasswort für $USERNAME: &quot; PASSWORD
+fi
+
+ping -c 1 -W 5 &quot;$HSR_SCRIPTSERVER&quot; &gt; /dev/null 2&gt;&amp;1
+if [ $? -eq 0 ]; then
+    MUST_VPN_DISCONNECT=false
+else
+    # VPN nur verbinden wenn die Verbindung noch nicht besteht, und der PC sich nicht im WLAN der HSR befindet
+    connect_vpn
+    MUST_VPN_DISCONNECT=true
+fi
+
+mount_shares
+
+if&#160;! $NODIALOG; then
+    while true;
+    do
+        action=$(choose_action);
+        clear
+
+        case $action in
+            1) # Synchronisation starten
+                synchronisation
+                sleep 3
+               &#160;;;
+            *) # Abbrechen / Beenden
+                break;
+               &#160;;;
+        esac
+    done
+else
+    synchronisation
+fi;
+
+umount_shares
+
+if $MUST_VPN_DISCONNECT; then
+    disconnect_vpn
+fi;
+
+echo -e &quot;\nFertig!\n&quot;
+
+sleep 3
+
+</pre>
+<h2><span class="mw-headline" id="Datei:_hsr_sync_list.txt_.28vorzugsweise_im_gleichen_Ordner_wie_hsr_sync.sh.29">Datei: hsr_sync_list.txt (vorzugsweise im gleichen Ordner wie hsr_sync.sh)</span></h2>
+<pre>
+# Hier sind die zu synchronisierenden Verzeichnisse aufgelistet.
+#
+# Zeilen, die mit # beginnen, werden nicht ausgewertet.
+#
+# Eine Zeile enthält immer drei Angaben (mit&#160;:::: getrennt), und zwar in folgender Reihenfolge:
+# Lokales Unterverzeichnis&#160;:::: Verzeichnis auf Skriptserver&#160;:::: Zusaetzliche Optionen für &quot;rsync&quot; (siehe rsync Dokumentation)
+#
+# Beispiele (natürlich ohne # am Anfang):
+# Semester_2/An2E&#160;:::: Mathematik_Naturwissenschaften/Analysis_2_fuer_Elektrotechnik/An2E/&#160;:::: --exclude=FS12/Bronstein2008/
+# Semester_2/ELT2&#160;:::: Elektrotechnik/Fachbereich/Elektrotechnik_2/ELT2/&#160;:::: 
+#
+
+Sem4/CompT2&#160;:::: Elektrotechnik/Fachbereich/Computertechnik_1/CompT1/&#160;:::: 
+Sem4/ElMasch&#160;:::: Elektrotechnik/Fachbereich/Elektrische_Maschinen/ElMasch/&#160;:::: 
+Sem4/Elo2&#160;:::: Elektrotechnik/Fachbereich/Elektronik_2/Elo2/&#160;:::: 
+Sem4/ELT4&#160;:::: Elektrotechnik/Fachbereich/Elektrotechnik_4/ELT4/&#160;:::: 
+Sem4/FuVar&#160;:::: Mathematik_Naturwissenschaften/Funktionen_mehrerer_Variablen/FuVar/13FS Bernhardsgrütter/&#160;:::: 
+Sem4/NAP&#160;:::: Mathematik_Naturwissenschaften/Naturwissenschaftliches_Praktikum/NAP/&#160;:::: 
+Sem4/NaT2&#160;:::: Elektrotechnik/Fachbereich/Nachrichtentechnik_2/NaT2/&#160;:::: 
+Sem4/PMSwEng&#160;:::: Elektrotechnik/Fachbereich/Projektmanagement_und_Software_Engineering/PMSwEng/&#160;:::: 
+Sem4/RegT2E&#160;:::: Elektrotechnik/Fachbereich/Regelungstechnik_2/RegT2E/&#160;:::: 
+Sem4/RKI&#160;:::: Kommunikation_Wirtschaft_Recht/Rhetorische_Kommunikation_fuer_IngenieurInnen/RKI/&#160;:::: 
+Sem4/SigSys2&#160;:::: Elektrotechnik/Fachbereich/Signale_und_Systeme_2/SigSys2/&#160;:::: 
+Sem4/ManagSim&#160;:::: Kommunikation_Wirtschaft_Recht/Business_und_Recht_2/ManagSim/&#160;:::: 
+Sem4/ReVertr&#160;:::: Kommunikation_Wirtschaft_Recht/Business_und_Recht_2/ReVertr/&#160;:::: 
+</pre>
+
+<!-- 
+NewPP limit report
+Cached time: 20160404155205
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.013 seconds
+Real time usage: 0.016 seconds
+Preprocessor visited node count: 22/1000000
+Preprocessor generated node count: 56/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key vshsrch_altcomphsr:pcache:idhash:243-0!*!*!!*!5!* and timestamp 20160404155205 and revision id 1175
+ -->
+</div><div class="printfooter">
+Von „<a dir="ltr" href="index.php%3Ftitle=HSRSync_ConnectVPN&amp;oldid=1175.html">http://altcomphsr.vshsr.ch/index.php?title=HSRSync_ConnectVPN&amp;oldid=1175</a>“</div>
+					<div id='catlinks' class='catlinks catlinks-allhidden'></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="column-one">
+			<h2>Navigationsmenü</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Ansichten</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-main" class="selected"><a href="index.php%3Ftitle=HSRSync_ConnectVPN.html" title="Seiteninhalt anzeigen [c]" accesskey="c">Seite</a></li>
+				<li id="ca-talk" class="new"><a href="http://altcomphsr.vshsr.ch/index.php?title=Diskussion:HSRSync_ConnectVPN&amp;action=edit&amp;redlink=1" rel="discussion" title="Diskussion zum Seiteninhalt [t]" accesskey="t">Diskussion</a></li>
+				<li id="ca-viewsource"><a href="index.php%3Ftitle=HSRSync_ConnectVPN&amp;action=edit.html" title="Diese Seite ist geschützt. Ihr Quelltext kann dennoch angesehen und kopiert werden. [e]" accesskey="e">Quelltext anzeigen</a></li>
+				<li id="ca-history"><a href="index.php%3Ftitle=HSRSync_ConnectVPN&amp;action=history.html" title="Frühere Versionen dieser Seite [h]" accesskey="h">Versionsgeschichte</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Meine Werkzeuge</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-anonuserpage"><a href="./index.php%3Ftitle=Benutzer:152.96.237.233.html" class="new" title="Benutzerseite der IP-Adresse von der aus du Änderungen durchführst [.]" accesskey=".">152.96.237.233</a></li>
+													<li id="pt-anontalk"><a href="./index.php%3Ftitle=Benutzer_Diskussion:152.96.237.233.html" class="new" title="Diskussion über Änderungen von dieser IP-Adresse [n]" accesskey="n">Diskussionsseite dieser IP</a></li>
+													<li id="pt-createaccount"><a href="./index.php%3Ftitle=Spezial:Anmelden&amp;returnto=HSRSync+ConnectVPN&amp;type=signup.html" title="Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.">Benutzerkonto erstellen</a></li>
+													<li id="pt-login"><a href="./index.php%3Ftitle=Spezial:Anmelden&amp;returnto=HSRSync+ConnectVPN.html" title="Sich anzumelden wird gerne gesehen, ist jedoch nicht zwingend erforderlich. [o]" accesskey="o">Anmelden</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="index.html" class="mw-wiki-logo" title="Hauptseite"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class='pBody'>
+							<ul>
+											<li id="n-mainpage-description"><a href="index.html" title="Hauptseite besuchen [z]" accesskey="z">Hauptseite</a></li>
+											<li id="n-currentevents"><a href="./index.php%3Ftitle=alt.comp.hsr:Aktuelle_Ereignisse.html" title="Hintergrundinformationen zu aktuellen Ereignissen">Aktuelle Ereignisse</a></li>
+											<li id="n-Statuten"><a href="./index.php%3Ftitle=Medium:Statuten.pdf.html">Statuten</a></li>
+											<li id="n-recentchanges"><a href="./index.php%3Ftitle=Spezial:Letzte_%25C3%2584nderungen.html" title="Liste der letzten Änderungen in diesem Wiki [r]" accesskey="r">Letzte Änderungen</a></li>
+											<li id="n-randompage"><a href="./index.php%3Ftitle=Spezial:Zuf%25C3%25A4llige_Seite.html" title="Zufällige Seite aufrufen [x]" accesskey="x">Zufällige Seite</a></li>
+											<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="Hilfeseite anzeigen">Hilfe</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Suche</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="http://altcomphsr.vshsr.ch/index.php" id="searchform">
+					<input type='hidden' name="title" value="Spezial:Suche"/>
+					<input type="search" name="search" placeholder="Suchen" title="alt.comp.hsr durchsuchen [f]" accesskey="f" id="searchInput" />
+					<input type="submit" name="go" value="Seite" title="Gehe direkt zu der Seite, die exakt dem eingegebenen Namen entspricht." id="searchGoButton" class="searchButton" />&#160;
+						<input type="submit" name="fulltext" value="Suchen" title="Suche nach Seiten, die diesen Text enthalten" id="mw-searchButton" class="searchButton" />
+				</form>
+
+							</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Werkzeuge</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="./index.php%3Ftitle=Spezial:Linkliste%252FHSRSync_ConnectVPN.html" title="Liste aller Seiten, die hierher verlinken [j]" accesskey="j">Links auf diese Seite</a></li>
+											<li id="t-recentchangeslinked"><a href="http://altcomphsr.vshsr.ch/index.php?title=Spezial:%C3%84nderungen_an_verlinkten_Seiten/HSRSync_ConnectVPN" title="Letzte Änderungen an Seiten, die von hier verlinkt sind [k]" accesskey="k">Änderungen an verlinkten Seiten</a></li>
+											<li id="t-specialpages"><a href="./index.php%3Ftitle=Spezial:Spezialseiten.html" title="Liste aller Spezialseiten [q]" accesskey="q">Spezialseiten</a></li>
+											<li id="t-print"><a href="index.php%3Ftitle=HSRSync_ConnectVPN&amp;printable=yes.html" rel="alternate" title="Druckansicht dieser Seite [p]" accesskey="p">Druckversion</a></li>
+											<li id="t-permalink"><a href="index.php%3Ftitle=HSRSync_ConnectVPN&amp;oldid=1175.html" title="Dauerhafter Link zu dieser Seitenversion">Permanenter Link</a></li>
+											<li id="t-info"><a href="index.php%3Ftitle=HSRSync_ConnectVPN&amp;action=info.html" title="Weitere Informationen über diese Seite">Seiten­informationen</a></li>
+									</ul>
+							</div>
+		</div>
+			</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<div id="f-copyrightico">
+									<a href="http://www.gnu.org/copyleft/fdl.html"><img src="resources/assets/licenses/gnu-fdl.png" alt="GNU Free Documentation License 1.2" width="88" height="31" /></a>
+							</div>
+					<div id="f-poweredbyico">
+									<a href="http://www.mediawiki.org/"><img src="resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" /></a>
+							</div>
+					<ul id="f-list">
+									<li id="lastmod"> Diese Seite wurde zuletzt am 11. August 2015 um 13:09 Uhr geändert.</li>
+									<li id="copyright">Der Inhalt ist verfügbar unter der Lizenz <a class="external" rel="nofollow" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License 1.2</a>, sofern nicht anders angegeben.</li>
+									<li id="privacy"><a href="http://altcomphsr.vshsr.ch/index.php?title=alt.comp.hsr:Datenschutz" title="alt.comp.hsr:Datenschutz">Datenschutz</a></li>
+									<li id="about"><a href="./index.php%3Ftitle=alt.comp.hsr:%25C3%259Cber_alt.comp.hsr.html" title="alt.comp.hsr:Über alt.comp.hsr">Über alt.comp.hsr</a></li>
+									<li id="disclaimer"><a href="http://altcomphsr.vshsr.ch/index.php?title=alt.comp.hsr:Impressum" title="alt.comp.hsr:Impressum">Impressum</a></li>
+							</ul>
+		</div>
+		</div>
+		<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({"user":"ready","user.groups":"ready"});
+} );</script>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=mediawiki.skinning.content.externallinks&amp;only=styles&amp;skin=monobook.css" />
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.load(["mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);
+} );</script><script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgBackendResponseTime":79});
+} );</script></body></html>

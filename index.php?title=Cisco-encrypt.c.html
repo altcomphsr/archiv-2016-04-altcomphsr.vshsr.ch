@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" />
+<title>Cisco-encrypt.c – alt.comp.hsr</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Cisco-encrypt.c","wgTitle":"Cisco-encrypt.c","wgCurRevisionId":1068,"wgRevisionId":1068,"wgArticleId":240,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":!1,"wgPageContentLanguage":"de","wgPageContentModel":"wikitext","wgSeparatorTransformTable":[",\t.",".\t,"],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"wgMonthNamesShort":["","Jan.","Feb.","Mär.","Apr.","Mai","Jun.","Jul.","Aug.","Sep.","Okt.","Nov.","Dez."],"wgRelevantPageName":"Cisco-encrypt.c","wgRelevantArticleId":240,"wgIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[]});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"de"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits"]);
+} );</script>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=mediawiki.legacy.commonPrint%252Cshared%257Cmediawiki.sectionAnchor%257Cmediawiki.skinning.interface%257Cskins.monobook.styles&amp;only=styles&amp;skin=monobook.css" />
+<!--[if IE 6]><link rel="stylesheet" href="/skins/MonoBook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/MonoBook/IE70Fixes.css?303" media="screen" /><![endif]-->
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=site&amp;only=styles&amp;skin=monobook.css" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
+<script async="" src="load.php%3Fdebug=false&amp;lang=de&amp;modules=startup&amp;only=scripts&amp;skin=monobook"></script>
+<meta name="generator" content="MediaWiki 1.26.0" />
+<link rel="shortcut icon" href="http://altcomphsr.vshsr.ch/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="opensearch_desc.php" title="alt.comp.hsr (de)" />
+<link rel="EditURI" type="application/rsd+xml" href="api.php%3Faction=rsd" />
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html" />
+<link rel="alternate" type="application/atom+xml" title="Atom-Feed für „alt.comp.hsr“" href="./index.php%3Ftitle=Spezial:Letzte_%25C3%2584nderungen&amp;feed=atom" />
+</head>
+<body class="mediawiki ltr sitedir-ltr capitalize-all-nouns ns-0 ns-subject page-Cisco-encrypt_c skin-monobook action-view">
+<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="de">Cisco-encrypt.c</h1>
+				
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">Aus alt.comp.hsr</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Wechseln zu: <a href="index.php%3Ftitle=Cisco-encrypt.c.html#column-one">Navigation</a>, <a href="index.php%3Ftitle=Cisco-encrypt.c.html#searchInput">Suche</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" lang="de" dir="ltr" class="mw-content-ltr"><p>Das hier ist das Programm um das VPN-Passwort für vpnc zu verschlüsseln (<a rel="nofollow" class="external free" href="index.php%3Ftitle=Vpnc.html">http://altcomphsr.vshsr.ch/index.php?title=Vpnc</a>):
+</p>
+<pre>/* Password encoder for Cisco VPN client.
+   Copyright (C) 2009 Sebastian Wicki
+
+   Derivated from cisco-decrypt - Copyright (C) 2005 Maurice Massar
+   Thanks to HAL-9000@evilscientists.de for decoding and posting the algorithm!
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+/*
+   Requires libgcrypt version 1.1.90 or newer
+   Compile with:
+    gcc -Wall -o cisco-encrypt cisco-encrypt.c $(libgcrypt-config --libs --cflags)
+   Usage:
+    ./cisco-encrypt PASSWORD1 PASSWORD2 ...
+*/
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;gcrypt.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;time.h&gt;
+
+void printhex(unsigned char *buffer, int length) {
+    int i;
+    for(i=0; i&lt;length; i++) {
+        printf("%02X", buffer[i]);
+    }
+    printf("\n");
+}
+
+int c_encrypt(const char *pw, int pwlen, char **resp, int *reslenp) {
+    char ht[20], h1[20], h2[20], h3[20], h4[20], key[24];
+    const char *iv = h1;
+    char *res, *enc, *tmp;
+    int i, enclen = (pwlen%8)&#160;? ((pwlen/8)+1)*8&#160;: pwlen;
+
+    gcry_cipher_hd_t ctx;
+    time_t rawtime;
+ 
+    time(&amp;rawtime);
+    tmp = ctime(&amp;rawtime);
+
+    /* h1 = SHA1 of ctime - bad source for entropy */
+    gcry_md_hash_buffer(GCRY_MD_SHA1, h1, tmp, strlen(tmp));
+
+    /* ht = temporary hash */
+    memcpy(ht, h1, 20);
+
+    /* h2 = SHA1 of modified h1*/
+    ht[19]++;
+    gcry_md_hash_buffer(GCRY_MD_SHA1, h2, ht, 20);
+
+    /* h3 = SHA1 of modified h2 */
+    ht[19] += 2;
+    gcry_md_hash_buffer(GCRY_MD_SHA1, h3, ht, 20);
+
+    /* key = h2 + (4 bytes of h3) */
+    memcpy(key, h2, 20);
+    memcpy(key+20, h3, 4);
+
+    /* allocate buffer for in-place encryption */
+    enc = malloc(enclen);
+    if(enc == NULL) {
+        return -1;
+    }
+
+    memcpy(enc, pw, pwlen);
+
+    /* padding */
+    for(i=pwlen; i&lt;enclen; i++) {
+        enc[i] = enclen - pwlen;
+    }
+
+    /* encrypt password with 3DES with iv = 8 bytes of h1, key = see above */
+    gcry_cipher_open(&amp;ctx, GCRY_CIPHER_3DES, GCRY_CIPHER_MODE_CBC, 0);
+    gcry_cipher_setkey(ctx, key, 24);
+    gcry_cipher_setiv(ctx, iv, 8);
+    gcry_cipher_encrypt(ctx, (unsigned char *)enc, enclen, NULL, 0);
+    gcry_cipher_close(ctx);
+
+    /* h4 = SHA1 of encrypted password */
+    gcry_md_hash_buffer(GCRY_MD_SHA1, h4, enc, enclen);
+
+    /* hash length */    
+    *reslenp = enclen+40;
+    res = malloc(*reslenp);
+
+    /* hash = h1 | h4 | encrypted password */
+    memcpy(res, h1, 20);
+    memcpy(res+20, h4, 20);
+    memcpy(res+40, enc, enclen);
+    
+    *resp = res;
+
+    free(enc);
+    return 0;
+}
+
+int main(int argc, char *argv[]) {
+    int i, ret = 0, pwlen, hashlen;
+    char *hash;
+
+    gcry_check_version(NULL);
+
+    for (i = 1; i &lt; argc; i++) {
+        pwlen = strlen(argv[i])+1;
+        
+        ret = c_encrypt(argv[i], pwlen, &amp;hash, &amp;hashlen);
+        if(ret&#160;!= 0) {
+            perror("encodig failed");
+            continue;
+        }
+
+        printhex((unsigned char *)hash, hashlen);
+        free(hash);
+    }
+    exit(ret&#160;!= 0);
+}
+</pre>
+<p>Quelle: <a rel="nofollow" class="external free" href="https://www.winhistory-forum.net/showthread.php?tid=3975">https://www.winhistory-forum.net/showthread.php?tid=3975</a> (Danke Gandro).
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20160404223607
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.003 seconds
+Real time usage: 0.004 seconds
+Preprocessor visited node count: 1/1000000
+Preprocessor generated node count: 4/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 1/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key vshsrch_altcomphsr:pcache:idhash:240-0!*!*!*!*!*!* and timestamp 20160404223607 and revision id 1068
+ -->
+</div><div class="printfooter">
+Von „<a dir="ltr" href="index.php%3Ftitle=Cisco-encrypt.c&amp;oldid=1068.html">http://altcomphsr.vshsr.ch/index.php?title=Cisco-encrypt.c&amp;oldid=1068</a>“</div>
+					<div id='catlinks' class='catlinks catlinks-allhidden'></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="column-one">
+			<h2>Navigationsmenü</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Ansichten</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-main" class="selected"><a href="index.php%3Ftitle=Cisco-encrypt.c.html" title="Seiteninhalt anzeigen [c]" accesskey="c">Seite</a></li>
+				<li id="ca-talk" class="new"><a href="http://altcomphsr.vshsr.ch/index.php?title=Diskussion:Cisco-encrypt.c&amp;action=edit&amp;redlink=1" rel="discussion" title="Diskussion zum Seiteninhalt [t]" accesskey="t">Diskussion</a></li>
+				<li id="ca-viewsource"><a href="index.php%3Ftitle=Cisco-encrypt.c&amp;action=edit.html" title="Diese Seite ist geschützt. Ihr Quelltext kann dennoch angesehen und kopiert werden. [e]" accesskey="e">Quelltext anzeigen</a></li>
+				<li id="ca-history"><a href="index.php%3Ftitle=Cisco-encrypt.c&amp;action=history.html" title="Frühere Versionen dieser Seite [h]" accesskey="h">Versionsgeschichte</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Meine Werkzeuge</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-anonuserpage"><a href="./index.php%3Ftitle=Benutzer:152.96.237.233.html" class="new" title="Benutzerseite der IP-Adresse von der aus du Änderungen durchführst [.]" accesskey=".">152.96.237.233</a></li>
+													<li id="pt-anontalk"><a href="./index.php%3Ftitle=Benutzer_Diskussion:152.96.237.233.html" class="new" title="Diskussion über Änderungen von dieser IP-Adresse [n]" accesskey="n">Diskussionsseite dieser IP</a></li>
+													<li id="pt-createaccount"><a href="./index.php%3Ftitle=Spezial:Anmelden&amp;returnto=Cisco-encrypt.c&amp;type=signup.html" title="Wir ermutigen dich dazu, ein Benutzerkonto zu erstellen und dich anzumelden. Es ist jedoch nicht zwingend erforderlich.">Benutzerkonto erstellen</a></li>
+													<li id="pt-login"><a href="./index.php%3Ftitle=Spezial:Anmelden&amp;returnto=Cisco-encrypt.c.html" title="Sich anzumelden wird gerne gesehen, ist jedoch nicht zwingend erforderlich. [o]" accesskey="o">Anmelden</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="index.html" class="mw-wiki-logo" title="Hauptseite"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class='pBody'>
+							<ul>
+											<li id="n-mainpage-description"><a href="index.html" title="Hauptseite besuchen [z]" accesskey="z">Hauptseite</a></li>
+											<li id="n-currentevents"><a href="./index.php%3Ftitle=alt.comp.hsr:Aktuelle_Ereignisse.html" title="Hintergrundinformationen zu aktuellen Ereignissen">Aktuelle Ereignisse</a></li>
+											<li id="n-Statuten"><a href="./index.php%3Ftitle=Medium:Statuten.pdf.html">Statuten</a></li>
+											<li id="n-recentchanges"><a href="./index.php%3Ftitle=Spezial:Letzte_%25C3%2584nderungen.html" title="Liste der letzten Änderungen in diesem Wiki [r]" accesskey="r">Letzte Änderungen</a></li>
+											<li id="n-randompage"><a href="./index.php%3Ftitle=Spezial:Zuf%25C3%25A4llige_Seite.html" title="Zufällige Seite aufrufen [x]" accesskey="x">Zufällige Seite</a></li>
+											<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="Hilfeseite anzeigen">Hilfe</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Suche</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="http://altcomphsr.vshsr.ch/index.php" id="searchform">
+					<input type='hidden' name="title" value="Spezial:Suche"/>
+					<input type="search" name="search" placeholder="Suchen" title="alt.comp.hsr durchsuchen [f]" accesskey="f" id="searchInput" />
+					<input type="submit" name="go" value="Seite" title="Gehe direkt zu der Seite, die exakt dem eingegebenen Namen entspricht." id="searchGoButton" class="searchButton" />&#160;
+						<input type="submit" name="fulltext" value="Suchen" title="Suche nach Seiten, die diesen Text enthalten" id="mw-searchButton" class="searchButton" />
+				</form>
+
+							</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Werkzeuge</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="./index.php%3Ftitle=Spezial:Linkliste%252FCisco-encrypt.c.html" title="Liste aller Seiten, die hierher verlinken [j]" accesskey="j">Links auf diese Seite</a></li>
+											<li id="t-recentchangeslinked"><a href="http://altcomphsr.vshsr.ch/index.php?title=Spezial:%C3%84nderungen_an_verlinkten_Seiten/Cisco-encrypt.c" title="Letzte Änderungen an Seiten, die von hier verlinkt sind [k]" accesskey="k">Änderungen an verlinkten Seiten</a></li>
+											<li id="t-specialpages"><a href="./index.php%3Ftitle=Spezial:Spezialseiten.html" title="Liste aller Spezialseiten [q]" accesskey="q">Spezialseiten</a></li>
+											<li id="t-print"><a href="index.php%3Ftitle=Cisco-encrypt.c&amp;printable=yes.html" rel="alternate" title="Druckansicht dieser Seite [p]" accesskey="p">Druckversion</a></li>
+											<li id="t-permalink"><a href="index.php%3Ftitle=Cisco-encrypt.c&amp;oldid=1068.html" title="Dauerhafter Link zu dieser Seitenversion">Permanenter Link</a></li>
+											<li id="t-info"><a href="index.php%3Ftitle=Cisco-encrypt.c&amp;action=info.html" title="Weitere Informationen über diese Seite">Seiten­informationen</a></li>
+									</ul>
+							</div>
+		</div>
+			</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<div id="f-copyrightico">
+									<a href="http://www.gnu.org/copyleft/fdl.html"><img src="resources/assets/licenses/gnu-fdl.png" alt="GNU Free Documentation License 1.2" width="88" height="31" /></a>
+							</div>
+					<div id="f-poweredbyico">
+									<a href="http://www.mediawiki.org/"><img src="resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" /></a>
+							</div>
+					<ul id="f-list">
+									<li id="lastmod"> Diese Seite wurde zuletzt am 5. Oktober 2012 um 07:47 Uhr geändert.</li>
+									<li id="copyright">Der Inhalt ist verfügbar unter der Lizenz <a class="external" rel="nofollow" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License 1.2</a>, sofern nicht anders angegeben.</li>
+									<li id="privacy"><a href="http://altcomphsr.vshsr.ch/index.php?title=alt.comp.hsr:Datenschutz" title="alt.comp.hsr:Datenschutz">Datenschutz</a></li>
+									<li id="about"><a href="./index.php%3Ftitle=alt.comp.hsr:%25C3%259Cber_alt.comp.hsr.html" title="alt.comp.hsr:Über alt.comp.hsr">Über alt.comp.hsr</a></li>
+									<li id="disclaimer"><a href="http://altcomphsr.vshsr.ch/index.php?title=alt.comp.hsr:Impressum" title="alt.comp.hsr:Impressum">Impressum</a></li>
+							</ul>
+		</div>
+		</div>
+		<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.state({"user":"ready","user.groups":"ready"});
+} );</script>
+<link rel="stylesheet" href="load.php%3Fdebug=false&amp;lang=de&amp;modules=mediawiki.skinning.content.externallinks&amp;only=styles&amp;skin=monobook.css" />
+<script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.loader.load(["mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);
+} );</script><script>window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+mw.config.set({"wgBackendResponseTime":136});
+} );</script></body></html>
